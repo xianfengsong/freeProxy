@@ -11,7 +11,8 @@ class FreeProxyListSpider(scrapy.Spider):
 
     custom_settings = {
         #超时2s
-        'DOWNLOAD_TIMEOUT': 2
+        'DOWNLOAD_TIMEOUT': 2,
+        'MONGO_STABLEPROXY_PIPELINE_ENABLED' :False
     }
     def parse(self,response):
         check_url = 'https://www.google.com'
@@ -33,6 +34,7 @@ class FreeProxyListSpider(scrapy.Spider):
                     protocol = 'http'
 
                 address = protocol+'://'+ip+':'+port
+                proxyItem['protocol'] = protocol
                 proxyItem['address'] = address
                 proxyItem['_id'] = address
                 #构造检查请求

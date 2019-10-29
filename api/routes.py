@@ -23,4 +23,5 @@ def proxy(requestid,protocol):
         return "None"
 
 if __name__ == "__main__":
-    app.run(debug=True,host='10.221.128.67')
+    #your host
+    app.run(debug=True,host='127.0.0.1')

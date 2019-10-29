@@ -9,6 +9,7 @@ import scrapy
 
 
 class ProxyItem(scrapy.Item):
+    
     #自定义id,使用完整地址的值
     _id = scrapy.Field()
     
