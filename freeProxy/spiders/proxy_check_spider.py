@@ -7,14 +7,15 @@ class ProxyCheckSpider(scrapy.Spider):
     #自定义配置
     custom_settings = {
         #超时1s
-        'DOWNLOAD_TIMEOUT': 1
+        'DOWNLOAD_TIMEOUT': 1,
+        'MONGOPIPELINE_ENABLED' :False
     }
     def start_requests(self):
         url = 'https://www.google.com'
         proxys = []
         with open('proxy.jl','r') as f:
             for line in f:
-                proxys.append(json.loads(line)['proxy'])
+                proxys.append(json.loads(line)['address'])
         for proxy in proxys:
             yield scrapy.Request(url,callback=self.parse,meta={'proxy':proxy},dont_filter=True)
 

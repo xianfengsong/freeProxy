@@ -6,6 +6,7 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import pymongo
+from scrapy.exceptions import NotConfigured
 
 
 class MongoPipeline(object):
@@ -22,6 +23,9 @@ class MongoPipeline(object):
         
     @classmethod
     def from_crawler(cls, crawler):
+        if not crawler.settings.getbool('MONGOPIPELINE_ENABLED'):
+            # if this isn't specified in settings, the pipeline will be completely disabled
+            raise NotConfigured
         return cls(
             mongo_uri=crawler.settings.get('MONGO_URI'),
             mongo_db=crawler.settings.get('MONGO_DATABASE', 'items')

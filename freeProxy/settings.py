@@ -65,8 +65,9 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'freeProxy.pipelines.MongoPipeline': 300,
+#    'freeProxy.pipelines.MongoPipeline': 300,
 }
+MONGOPIPELINE_ENABLED = True # you could have the pipeline enabled by default
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
