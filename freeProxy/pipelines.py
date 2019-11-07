@@ -15,7 +15,7 @@ class MongoFreshProxyPipeline(object):
     collection_name = 'fresh_proxy'
     
     #fresh_proxy中元素过期时间(s)
-    expire_time = 3000
+    expire_time = 600
 
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri

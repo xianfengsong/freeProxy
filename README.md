@@ -17,3 +17,10 @@ MONGO_DATABASE = 'free_proxy'
    }
  )
 ```
+## crontab 
+
+```
+*/10 * * * * cd your_path/freeProxy/freeProxy && scrapy crawl free-proxy-list
+*/5 * * * *  cd your_path/freeProxy/freeProxy && scrapy crawl check
+
+```
